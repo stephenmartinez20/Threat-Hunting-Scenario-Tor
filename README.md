@@ -166,5 +166,6 @@ Overall, the evidence strongly supports that the user intentionally downloaded, 
 
 ## Response Taken
 
-TOR usage was confirmed on endpoint edr-test-marty by the user marty. The device was isolated and the user's direct manager was notified.
+TOR usage was confirmed on endpoint edr-test-marty by the user marty. The device was isolated and the user's direct manager was notified. 
+
 ---
