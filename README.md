@@ -48,18 +48,20 @@ DeviceFileEvents
 
 ### 2. Searched the `DeviceProcessEvents` Table
 
-Searched for any `ProcessCommandLine` that contained the string "tor-browser-windows-x86_64-portable-14.0.1.exe". Based on the logs returned, at `2024-11-08T22:16:47.4484567Z`, an employee on the "threat-hunt-lab" device ran the file `tor-browser-windows-x86_64-portable-14.0.1.exe` from their Downloads folder, using a command that triggered a silent installation.
+Searched the DeviceProcessEvents Table for ANY ProcessCommandLine that contained the string “tor-browser-windows-x86_64-portable-15.0.13.exe”. Based on the logs returned, At 2026-05-09T15:06:36.0806205Z, an employee named “Marty” on the “edr-test-marty” device ran the file tor-browser-windows-x86_64-portable-15.0.13.exe from their Downloads folder, using a command that triggered a silent installation.
 
 **Query used to locate event:**
 
 ```kql
 
 DeviceProcessEvents  
-| where DeviceName == "threat-hunt-lab"  
-| where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.0.1.exe"  
+| where DeviceName == "edr-test-marty"  
+| where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-15.0.13.exe"  
 | project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/b07ac4b4-9cb3-4834-8fac-9f5f29709d78">
+<img width="1420" height="74" alt="image" src="https://github.com/user-attachments/assets/df80f056-b45c-4262-a7f4-b75322dd36fd" />
+
+
 
 ---
 
