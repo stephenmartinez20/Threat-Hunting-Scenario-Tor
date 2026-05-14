@@ -130,36 +130,41 @@ DeviceNetworkEvents
 ### 4. Network Connection - TOR Network
 
 - **Timestamp:** `2026-05-09 15:07:08.9067449Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
+- **Event:** A network connection to IP `212.227.104.242` on port `9001` by user "marty" was established using `tor.exe`, confirming TOR browser network activity.
 - **Action:** Connection success.
 - **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
+- **File Path:** `c:\users\marty\desktop\tor browser\browser\torbrowser\tor\tor.exe`
 
 ### 5. Additional Network Connections - TOR Browser Activity
 
 - **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
+  - `2026-05-09T11:07:17Z` - Connected to `23.191.200.23` on port `443`.
+  - `2026-05-09T11:07:30Z` - Local connection to `127.0.0.1` on port `9150`.
+- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "marty" through the TOR browser.
 - **Action:** Multiple successful connections detected.
 
 ### 6. File Creation - TOR Shopping List
 
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
+- **Timestamp:** `2026-05-09T15:29:01.6036215ZZ`
+- **Event:** The user "marty" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
 - **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+- **File Path:** `C:\Users\marty\Desktop\tor-shopping-list.txt`
 
 ---
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+The investigation confirmed that user marty on endpoint edr-test-marty downloaded, installed, launched, and used the Tor Browser on 2026-05-09.
+The activity began with Tor-related file creation events beginning at 15:04:53 UTC, followed by execution of the Tor Browser portable installer from the Downloads directory at 15:06:36 UTC. Shortly after execution, Tor Browser components including tor.exe and firefox.exe were launched from the desktop-installed Tor Browser directory.
+Process telemetry confirmed initialization of the Tor service, including SOCKS proxy configuration and Tor control port setup, followed by successful launch of the Tor Browser application.
+Network telemetry confirmed outbound connectivity to a remote host over TCP port 9001, a port commonly associated with Tor relay communications, demonstrating that the Tor client successfully connected to the Tor network.
+Subsequent activity showed continued Tor Browser operation through additional Firefox child processes and encrypted outbound connections over port 443.
+The final observed Tor-related event was the creation of a desktop file named tor-shopping-list.txt at 15:29:01 UTC.
+Overall, the evidence strongly supports that the user intentionally downloaded, installed, and actively used the Tor Browser on the endpoint during the identified timeframe
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
-
+TOR usage was confirmed on endpoint edr-test-marty by the user marty. The device was isolated and the user's direct manager was notified.
 ---
